@@ -2,8 +2,8 @@
   <header class="navbar">
     <div class="navbar__inner">
 
-      <!-- Brand / Film-strip SVG -->
-      <RouterLink to="/" class="navbar__brand" aria-label="Home">
+      <!-- Brand: Film-strip on home, page title on other pages -->
+      <RouterLink v-if="isHome" to="/" class="navbar__brand" aria-label="Home">
         <svg
           class="film-svg"
           viewBox="-25 -20 640 165"
@@ -12,85 +12,52 @@
           preserveAspectRatio="xMinYMid meet"
         >
           <defs>
-            <!-- Text follows a path below the strip -->
             <path id="textCurve"
               d="M 5,28 C 90,8 205,123 325,123 C 435,122 520,53 595,63" />
           </defs>
 
-          <!-- ── Film-strip body ──────────────────────────── -->
-          <path
-            :d="stripBodyPath"
-            fill="#8a8580" opacity="0.8"
-          />
+          <path :d="stripBodyPath" fill="#8a8580" opacity="0.8" />
 
-          <!-- ── Frame divider lines inside strip ─────────── -->
           <line
-            v-for="(f, i) in frames"
-            :key="'f' + i"
-            :x1="f.tx" :y1="f.ty"
-            :x2="f.bx" :y2="f.by"
+            v-for="(f, i) in frames" :key="'f' + i"
+            :x1="f.tx" :y1="f.ty" :x2="f.bx" :y2="f.by"
             stroke="#6b6560" stroke-width="0.8" opacity="0.3"
           />
 
-          <!-- ── Top edge perforations ────────────────────── -->
           <rect
-            v-for="(p, i) in topPerfs"
-            :key="'tp' + i"
-            :x="p.x - 5.5" :y="p.y - 3"
-            width="11" height="6" rx="1.5"
-            :transform="`rotate(${p.angle} ${p.x} ${p.y})`"
-            fill="#ede7df"
+            v-for="(p, i) in topPerfs" :key="'tp' + i"
+            :x="p.x - 5.5" :y="p.y - 3" width="11" height="6" rx="1.5"
+            :transform="`rotate(${p.angle} ${p.x} ${p.y})`" fill="#ede7df"
           />
 
-          <!-- ── Bottom edge perforations ─────────────────── -->
           <rect
-            v-for="(p, i) in botPerfs"
-            :key="'bp' + i"
-            :x="p.x - 5.5" :y="p.y - 3"
-            width="11" height="6" rx="1.5"
-            :transform="`rotate(${p.angle} ${p.x} ${p.y})`"
-            fill="#ede7df"
+            v-for="(p, i) in botPerfs" :key="'bp' + i"
+            :x="p.x - 5.5" :y="p.y - 3" width="11" height="6" rx="1.5"
+            :transform="`rotate(${p.angle} ${p.x} ${p.y})`" fill="#ede7df"
           />
 
-          <!-- ── Tagline text on curved path ──────────────── -->
-          <text
-            font-family="'Lato', sans-serif"
-            font-size="14"
-            font-weight="700"
-            letter-spacing="1.5"
-            fill="#8a8580"
-          >
+          <text font-family="'Lato', sans-serif" font-size="14" font-weight="700"
+            letter-spacing="1.5" fill="#8a8580">
             <textPath href="#textCurve" startOffset="1%">
               Social.&#160;&#160;Strategy.&#160;&#160;Storytelling.&#160;&#160;Design.&#160;&#160;Voice.&#160;&#160;Impact.
             </textPath>
           </text>
 
-          <!-- ── Scissors at end of strip ─────────────────── -->
           <g :transform="`translate(${scissorPos.x} ${scissorPos.y}) rotate(${scissorPos.angle})`">
-            <!-- Top blade -->
-            <ellipse cx="-10" cy="-3" rx="13" ry="3.5"
-              fill="none" stroke="#8a8580" stroke-width="2" />
-            <!-- Bottom blade -->
-            <ellipse cx="-10" cy="3" rx="13" ry="3.5"
-              fill="none" stroke="#8a8580" stroke-width="2" />
-            <!-- Top handle loop -->
-            <circle cx="7" cy="-7" r="5"
-              fill="none" stroke="#8a8580" stroke-width="1.8" />
-            <!-- Bottom handle loop -->
-            <circle cx="7" cy="7" r="5"
-              fill="none" stroke="#8a8580" stroke-width="1.8" />
-            <!-- Pivot screw -->
+            <ellipse cx="-10" cy="-3" rx="13" ry="3.5" fill="none" stroke="#8a8580" stroke-width="2" />
+            <ellipse cx="-10" cy="3" rx="13" ry="3.5" fill="none" stroke="#8a8580" stroke-width="2" />
+            <circle cx="7" cy="-7" r="5" fill="none" stroke="#8a8580" stroke-width="1.8" />
+            <circle cx="7" cy="7" r="5" fill="none" stroke="#8a8580" stroke-width="1.8" />
             <circle cx="0" cy="0" r="1.8" fill="#8a8580" />
           </g>
 
-          <!-- ── Subtle brush-stroke deco (right side) ────── -->
-          <path
-            d="M 450,-12 Q 480,-14 530,-10 Q 560,-8 580,-12"
-            fill="none" stroke="#c0b5a8" stroke-width="3"
-            stroke-linecap="round" opacity="0.35"
-          />
+          <path d="M 450,-12 Q 480,-14 530,-10 Q 560,-8 580,-12"
+            fill="none" stroke="#c0b5a8" stroke-width="3" stroke-linecap="round" opacity="0.35" />
         </svg>
       </RouterLink>
+
+      <!-- Spacer on non-home pages (page handles its own title) -->
+      <div v-else class="navbar__brand navbar__brand--spacer" />
 
       <!-- Desktop nav -->
       <nav class="navbar__nav" :class="{ 'navbar__nav--open': menuOpen }" aria-label="Main navigation">
@@ -142,12 +109,18 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
+
+const route = useRoute()
+
+/* ── Route-aware brand ──────────────────────────────────── */
+const isHome = computed(() => route.path === '/')
 
 /* ── Nav links ──────────────────────────────────────────── */
 interface NavLink { label: string; to: string }
 
 const navLinks: NavLink[] = [
+  { label: 'Home', to: '/' },
   { label: 'About Me', to: '/about' },
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Services', to: '/services' },
@@ -267,17 +240,17 @@ const scissorPos = computed(() => {
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-body: 'Lato', system-ui, sans-serif;
 
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 200;
   background: transparent;
   border-bottom: none;
+  padding-top: 2.5rem;
 }
 
 /* ── Inner layout ────────────────────────────────────────── */
 .navbar__inner {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   max-width: 1400px;
   margin: 0 auto;
@@ -302,12 +275,20 @@ const scissorPos = computed(() => {
   overflow: visible;
 }
 
+/* ── Page title (non-home) brand area ────────────────────── */
+.navbar__brand--spacer {
+  flex: 0 0 auto;
+  width: 0;
+}
+
 /* ── Desktop nav links ───────────────────────────────────── */
 .navbar__nav {
   display: flex;
   align-items: center;
   gap: 2.5rem;
   padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  margin-left: auto;
 }
 
 .navbar__link {
@@ -329,9 +310,9 @@ const scissorPos = computed(() => {
   font-weight: 600;
 }
 
-/* ── Hamburger ───────────────────────────────────────────── */
+/* ── Hamburger (mobile only) ──────────────────────────────── */
 .navbar__hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -417,10 +398,6 @@ const scissorPos = computed(() => {
 }
 
 @media (min-width: 769px) {
-  .navbar__hamburger {
-    display: flex;
-  }
-
   .navbar__mobile-menu {
     display: none !important;
   }
