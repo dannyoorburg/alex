@@ -11,9 +11,9 @@ html {
 
 body {
   font-family: 'Lato', system-ui, -apple-system, sans-serif;
-  background-color: #f0ebe5;
+  background-color: #ede7df;
   background-image: url('/brick.svg');
-  background-size: 240px 72px;
+  background-size: 480px 180px;
   background-repeat: repeat;
   color: #5c2a14;
   line-height: 1.6;

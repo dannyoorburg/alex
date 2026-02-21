@@ -1,26 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="72">
-  <rect width="240" height="72" fill="#f0ebe5"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="180">
+  <defs>
+    <!-- Subtle noise texture for brick surface -->
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="5" seed="2" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+      <feBlend in="SourceGraphic" in2="gray" mode="soft-light"/>
+    </filter>
+    <!-- Inset shadow + highlight for bricks -->
+    <filter id="bevel" x="-3%" y="-6%" width="106%" height="116%">
+      <!-- Top highlight -->
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset dx="0" dy="1.5" result="offsetBlur"/>
+      <feFlood flood-color="#ffffff" flood-opacity="0.45" result="hiLight"/>
+      <feComposite in="hiLight" in2="offsetBlur" operator="in" result="hiComp"/>
+      <!-- Bottom shadow -->
+      <feOffset in="SourceAlpha" dx="0" dy="-1.5" result="shOff"/>
+      <feGaussianBlur in="shOff" stdDeviation="1.5" result="shBlur"/>
+      <feFlood flood-color="#b8ad9f" flood-opacity="0.35" result="shColor"/>
+      <feComposite in="shColor" in2="shBlur" operator="in" result="shComp"/>
+      <feMerge>
+        <feMergeNode in="hiComp"/>
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="shComp"/>
+      </feMerge>
+    </filter>
+    <!-- Mortar texture -->
+    <filter id="mortar">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="5" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="gray"/>
+      <feBlend in="SourceGraphic" in2="gray" mode="soft-light"/>
+    </filter>
 
-  <!-- mortar lines: horizontal -->
-  <line x1="0" y1="0"  x2="240" y2="0"  stroke="#e0d9d1" stroke-width="2"/>
-  <line x1="0" y1="36" x2="240" y2="36" stroke="#e0d9d1" stroke-width="2"/>
-  <line x1="0" y1="72" x2="240" y2="72" stroke="#e0d9d1" stroke-width="2"/>
+    <!-- Brick gradients — each with horizontal + vertical for realism -->
+    <linearGradient id="brickG1" x1="0" y1="0" x2="0.15" y2="1">
+      <stop offset="0%" stop-color="#f4eee6"/>
+      <stop offset="25%" stop-color="#ede6dc"/>
+      <stop offset="60%" stop-color="#e8e0d5"/>
+      <stop offset="100%" stop-color="#e3dacf"/>
+    </linearGradient>
+    <linearGradient id="brickG2" x1="0.1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2ebe2"/>
+      <stop offset="30%" stop-color="#ebe3d8"/>
+      <stop offset="70%" stop-color="#e5dcd1"/>
+      <stop offset="100%" stop-color="#e0d7cb"/>
+    </linearGradient>
+    <linearGradient id="brickG3" x1="0" y1="0" x2="0.08" y2="1">
+      <stop offset="0%" stop-color="#f0eae1"/>
+      <stop offset="35%" stop-color="#eae2d7"/>
+      <stop offset="65%" stop-color="#e4dbd0"/>
+      <stop offset="100%" stop-color="#dfd6ca"/>
+    </linearGradient>
+    <linearGradient id="brickG4" x1="0.05" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3ede5"/>
+      <stop offset="20%" stop-color="#ede5db"/>
+      <stop offset="55%" stop-color="#e7ded3"/>
+      <stop offset="100%" stop-color="#e2d9cd"/>
+    </linearGradient>
+  </defs>
 
-  <!-- mortar lines: vertical row 1 (y 0-36) -->
-  <line x1="0"   y1="1"  x2="0"   y2="35" stroke="#e0d9d1" stroke-width="2"/>
-  <line x1="120" y1="1"  x2="120" y2="35" stroke="#e0d9d1" stroke-width="2"/>
-  <line x1="240" y1="1"  x2="240" y2="35" stroke="#e0d9d1" stroke-width="2"/>
+  <!-- ── Mortar background ────────────────────────────────── -->
+  <rect width="480" height="180" fill="#ddd5cb" filter="url(#mortar)"/>
+  <!-- Mortar highlight wash -->
+  <rect width="480" height="180" fill="#e8e1d7" opacity="0.4"/>
 
-  <!-- mortar lines: vertical row 2 (y 36-72) staggered by 60px -->
-  <line x1="60"  y1="37" x2="60"  y2="71" stroke="#e0d9d1" stroke-width="2"/>
-  <line x1="180" y1="37" x2="180" y2="71" stroke="#e0d9d1" stroke-width="2"/>
+  <!-- ═══ ROW 1 (y: 8–76, height 68) ═══ two full bricks -->
+  <rect x="8"   y="8"  width="222" height="68" rx="3" ry="3" fill="url(#brickG1)" filter="url(#bevel)"/>
+  <rect x="8"   y="8"  width="222" height="68" rx="3" ry="3" fill="url(#brickG1)" filter="url(#rough)" opacity="0.55"/>
 
-  <!-- slight warm tint on bricks (row 1) -->
-  <rect x="1"   y="1"  width="118" height="34" fill="#ede8e2" rx="1"/>
-  <rect x="121" y="1"  width="118" height="34" fill="#eee9e3" rx="1"/>
+  <rect x="250" y="8"  width="222" height="68" rx="3" ry="3" fill="url(#brickG2)" filter="url(#bevel)"/>
+  <rect x="250" y="8"  width="222" height="68" rx="3" ry="3" fill="url(#brickG2)" filter="url(#rough)" opacity="0.55"/>
 
-  <!-- slight warm tint on bricks (row 2, staggered) -->
-  <rect x="1"   y="37" width="58"  height="34" fill="#eee9e3" rx="1"/>
-  <rect x="61"  y="37" width="118" height="34" fill="#ede8e2" rx="1"/>
-  <rect x="181" y="37" width="58"  height="34" fill="#eee9e3" rx="1"/>
+  <!-- ═══ ROW 2 (y: 96–164, height 68) ═══ staggered -->
+  <rect x="8"   y="96" width="102" height="68" rx="3" ry="3" fill="url(#brickG3)" filter="url(#bevel)"/>
+  <rect x="8"   y="96" width="102" height="68" rx="3" ry="3" fill="url(#brickG3)" filter="url(#rough)" opacity="0.55"/>
+
+  <rect x="130" y="96" width="222" height="68" rx="3" ry="3" fill="url(#brickG4)" filter="url(#bevel)"/>
+  <rect x="130" y="96" width="222" height="68" rx="3" ry="3" fill="url(#brickG4)" filter="url(#rough)" opacity="0.55"/>
+
+  <rect x="372" y="96" width="102" height="68" rx="3" ry="3" fill="url(#brickG1)" filter="url(#bevel)"/>
+  <rect x="372" y="96" width="102" height="68" rx="3" ry="3" fill="url(#brickG1)" filter="url(#rough)" opacity="0.55"/>
+
+  <!-- Mortar groove shadows (darker line at bottom of each mortar gap) -->
+  <line x1="0" y1="85"  x2="480" y2="85"  stroke="#cdc5ba" stroke-width="1.5" opacity="0.45"/>
+  <line x1="0" y1="173" x2="480" y2="173" stroke="#cdc5ba" stroke-width="1.5" opacity="0.45"/>
+
+  <!-- Mortar highlight lines (top edge catch light) -->
+  <line x1="0" y1="7"  x2="480" y2="7"  stroke="#f4efe9" stroke-width="1" opacity="0.35"/>
+  <line x1="0" y1="95" x2="480" y2="95" stroke="#f4efe9" stroke-width="1" opacity="0.35"/>
 </svg>
