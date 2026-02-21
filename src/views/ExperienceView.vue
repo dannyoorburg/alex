@@ -2,11 +2,6 @@
   <div class="experience">
     <section class="pg-section">
 
-      <div class="pg-header">
-        <h1 class="pg-title">Built on story</h1>
-        <div class="pg-divider"><span class="div-line"/><span class="div-heart">♡</span><span class="div-line"/></div>
-      </div>
-
       <p class="pg-subtitle">Shaped by experience. Led with heart. <span class="deco-quill">🪶</span></p>
 
       <div class="two-col">

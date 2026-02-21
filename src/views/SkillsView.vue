@@ -1,13 +1,6 @@
 <template>
   <div class="skills">
     <section class="pg-section">
-      <div class="stamp stamp--top-left">Mood. Motion. Meaning...<br>This is your moment.</div>
-      <div class="stamp stamp--top-right">Reels with Rhythm.<br>Content with Heart.</div>
-
-      <div class="pg-header">
-        <h1 class="pg-title">Skills &amp; Tools</h1>
-        <div class="pg-divider"><span class="div-line"/><span class="div-heart">♡</span><span class="div-line"/></div>
-      </div>
 
       <p class="pg-subtitle">Built on rhythm. Guided by instinct.</p>
 

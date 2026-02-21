@@ -131,7 +131,7 @@ const titleMap: Record<string, string> = {
   services: 'Creative Services',
   contact: 'Contact',
   story: 'Story',
-  skills: 'Skills',
+  skills: 'Skills & Tools',
   experience: 'Experience',
 }
 
