@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="72">
+  <rect width="240" height="72" fill="#f0ebe5"/>
+
+  <!-- mortar lines: horizontal -->
+  <line x1="0" y1="0"  x2="240" y2="0"  stroke="#e0d9d1" stroke-width="2"/>
+  <line x1="0" y1="36" x2="240" y2="36" stroke="#e0d9d1" stroke-width="2"/>
+  <line x1="0" y1="72" x2="240" y2="72" stroke="#e0d9d1" stroke-width="2"/>
+
+  <!-- mortar lines: vertical row 1 (y 0-36) -->
+  <line x1="0"   y1="1"  x2="0"   y2="35" stroke="#e0d9d1" stroke-width="2"/>
+  <line x1="120" y1="1"  x2="120" y2="35" stroke="#e0d9d1" stroke-width="2"/>
+  <line x1="240" y1="1"  x2="240" y2="35" stroke="#e0d9d1" stroke-width="2"/>
+
+  <!-- mortar lines: vertical row 2 (y 36-72) staggered by 60px -->
+  <line x1="60"  y1="37" x2="60"  y2="71" stroke="#e0d9d1" stroke-width="2"/>
+  <line x1="180" y1="37" x2="180" y2="71" stroke="#e0d9d1" stroke-width="2"/>
+
+  <!-- slight warm tint on bricks (row 1) -->
+  <rect x="1"   y="1"  width="118" height="34" fill="#ede8e2" rx="1"/>
+  <rect x="121" y="1"  width="118" height="34" fill="#eee9e3" rx="1"/>
+
+  <!-- slight warm tint on bricks (row 2, staggered) -->
+  <rect x="1"   y="37" width="58"  height="34" fill="#eee9e3" rx="1"/>
+  <rect x="61"  y="37" width="118" height="34" fill="#ede8e2" rx="1"/>
+  <rect x="181" y="37" width="58"  height="34" fill="#eee9e3" rx="1"/>
+</svg>

@@ -1,0 +1,189 @@
+/* Shared styles for all full-page views */
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+.pg-section {
+  min-height: 100vh;
+  padding: 4rem 5rem 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* ── Section header ───────────────────────────────────────── */
+.pg-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pg-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: #4a2010;
+  line-height: 1.1;
+}
+
+.pg-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 300px;
+}
+
+.div-line {
+  flex: 1;
+  height: 1.5px;
+  background: #7a4028;
+  border-radius: 2px;
+}
+
+.div-heart {
+  font-size: 1.1rem;
+  color: #7a4028;
+  line-height: 1;
+}
+
+.pg-subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: #4a2010;
+  margin-top: -0.5rem;
+}
+
+.pg-footer {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.3rem;
+  color: #7a4028;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ── Two-column layout ────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
+.card {
+  border-radius: 12px 40px 12px 40px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 280px;
+}
+
+.card--salmon { background: #c07a6a; }
+.card--rust   { background: #a85545; }
+
+.card p,
+.card li {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.05rem;
+  color: #fff;
+  line-height: 1.7;
+}
+
+.card strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.card-list li::before {
+  content: '* ';
+  opacity: 0.8;
+}
+
+/* ── CTA links ────────────────────────────────────────────── */
+.cta-link {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+  transition: opacity 0.2s;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.cta-link:hover { opacity: 0.7; }
+
+.cta-link--light {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+
+.cta-link--dark {
+  color: #3a1508;
+  text-decoration-color: rgba(58, 21, 8, 0.5);
+}
+
+/* ── Stamps ───────────────────────────────────────────────── */
+.stamp {
+  position: absolute;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #7a4028;
+  border: 1.5px solid #b08070;
+  border-radius: 6px;
+  padding: 0.45rem 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+  background: rgba(247, 237, 224, 0.75);
+  pointer-events: none;
+  user-select: none;
+  backdrop-filter: blur(2px);
+}
+
+.stamp--top-left  { top: 3rem; left: 0; }
+.stamp--top-right { top: 3rem; right: 5rem; }
+
+/* ── Quill decoration ─────────────────────────────────────── */
+.deco-quill {
+  display: inline-block;
+  transform: rotate(-15deg);
+  font-size: 1.2em;
+  opacity: 0.7;
+  margin-left: 0.5rem;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .pg-section {
+    padding: 3rem 2rem 4rem;
+    min-height: auto;
+  }
+
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .stamp--top-left  { top: 1rem; left: 1rem; }
+  .stamp--top-right { top: 1rem; right: 1rem; }
+}
