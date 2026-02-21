@@ -1,10 +1,6 @@
 ﻿<template>
   <div class="about">
     <section class="pg-section">
-      <div class="pg-header">
-        <h1 class="pg-title">About me ...</h1>
-        <div class="pg-divider"><span class="div-line"/><span class="div-heart">♡</span><span class="div-line"/></div>
-      </div>
 
       <div class="two-col">
         <div class="card card--salmon">

@@ -4,11 +4,6 @@
       <div class="stamp stamp--top-left">Mood. Motion. Meaning...<br>This is your moment.</div>
       <div class="stamp stamp--top-right">Reels with Rhythm.<br>Content with Heart.</div>
 
-      <div class="pg-header">
-        <h1 class="pg-title">Creative Services</h1>
-        <div class="pg-divider"><span class="div-line"/><span class="div-heart">?</span><span class="div-line"/></div>
-      </div>
-
       <p class="pg-subtitle">Strategy-led content &amp; design for digital presence</p>
 
       <div class="two-col">

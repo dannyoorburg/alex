@@ -30,12 +30,9 @@
 
       <!-- Right: headline + CTA -->
       <div class="hero-content">
-        <div class="stamp stamp--top-right" aria-hidden="true">
-          Reels with Rhythm.<br>Content with Heart.
-        </div>
         <h1 class="hero-title">Dreaming in Reels</h1>
         <p class="hero-subtitle">Visual storytelling with soul and strategy</p>
-        <RouterLink to="/story" class="cta-link">Explore &gt;&gt;&gt;</RouterLink>
+        <RouterLink to="/story" class="cta-link cta-link--right">Explore &gt;&gt;&gt;</RouterLink>
       </div>
     </section>
 
@@ -55,11 +52,11 @@ import { RouterLink } from 'vue-router'
 /* ── Shared section base ──────────────────────────────────── */
 .section {
   min-height: 100vh;
-  padding: 5rem 4rem;
+  padding: 1.5rem 3rem 5rem;
   position: relative;
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 3rem;
 }
 
 /* ── SECTION 1 — Hero ─────────────────────────────────────── */
@@ -69,13 +66,13 @@ import { RouterLink } from 'vue-router'
 
 /* -- Left grid -- */
 .hero-grid {
-  flex: 0 0 420px;
+  flex: 0 0 38%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 6px;
   position: relative;
-  height: 440px;
+  aspect-ratio: 1 / 1.05;
 }
 
 .grid-main {
@@ -171,20 +168,23 @@ import { RouterLink } from 'vue-router'
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  background: rgba(247, 241, 233, 0.55);
+  border-radius: 8px;
+  padding: 2.5rem 3rem;
 }
 
 .hero-title {
   font-family: 'Dancing Script', cursive;
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3.5rem, 8vw, 7rem);
   font-weight: 700;
   color: #5c2a14;
-  line-height: 1.1;
+  line-height: 1.05;
   margin-bottom: 0.75rem;
 }
 
 .hero-subtitle {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
   color: #5c2a14;
   margin-bottom: 2rem;
 }
@@ -200,6 +200,10 @@ import { RouterLink } from 'vue-router'
   text-underline-offset: 5px;
   text-decoration-thickness: 2px;
   transition: opacity 0.2s;
+}
+
+.cta-link--right {
+  align-self: flex-end;
 }
 
 .cta-link:hover {

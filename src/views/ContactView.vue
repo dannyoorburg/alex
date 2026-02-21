@@ -65,7 +65,7 @@
 /* ── Page wrapper ─────────────────────────────────────────── */
 .contact-section {
   min-height: 100vh;
-  padding: 5rem 4rem;
+  padding: 1.5rem 4rem;
   position: relative;
   display: flex;
   align-items: center;

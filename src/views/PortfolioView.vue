@@ -25,12 +25,6 @@
         </svg>
       </div>
 
-      <!-- Header -->
-      <div class="port-header">
-        <h1 class="port-title">Portfolio</h1>
-        <div class="port-divider"><span class="div-line"/><span class="div-heart">♡</span><span class="div-line"/></div>
-      </div>
-
       <p class="port-subtitle">Selected projects built with rhythm, story, and intent</p>
 
       <!-- ── Desert Crescendo ─────────────────────────────── -->
@@ -93,7 +87,7 @@ import { RouterLink } from 'vue-router'
 /* ── Section ──────────────────────────────────────────────── */
 .port-section {
   min-height: 100vh;
-  padding: 3rem 5rem 4rem;
+  padding: 1.5rem 5rem 4rem;
   position: relative;
   display: flex;
   flex-direction: column;

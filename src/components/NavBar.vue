@@ -56,8 +56,15 @@
         </svg>
       </RouterLink>
 
-      <!-- Spacer on non-home pages (page handles its own title) -->
-      <div v-else class="navbar__brand navbar__brand--spacer" />
+      <!-- Page title on non-home pages -->
+      <div v-else class="navbar__brand navbar__brand--title">
+        <h1 class="navbar__page-title">{{ pageTitle }}</h1>
+        <div class="navbar__title-divider">
+          <span class="title-line" />
+          <span class="title-heart">♡</span>
+          <span class="title-line" />
+        </div>
+      </div>
 
       <!-- Desktop nav -->
       <nav class="navbar__nav" :class="{ 'navbar__nav--open': menuOpen }" aria-label="Main navigation">
@@ -115,6 +122,23 @@ const route = useRoute()
 
 /* ── Route-aware brand ──────────────────────────────────── */
 const isHome = computed(() => route.path === '/')
+
+const titleMap: Record<string, string> = {
+  about: 'About me ...',
+  portfolio: 'Portfolio',
+  'desert-crescendo': 'Desert Crescendo',
+  'sand2sea': 'Sand2Sea',
+  services: 'Creative Services',
+  contact: 'Contact',
+  story: 'Story',
+  skills: 'Skills',
+  experience: 'Experience',
+}
+
+const pageTitle = computed(() => {
+  const name = route.name as string | undefined
+  return name ? (titleMap[name] ?? name) : ''
+})
 
 /* ── Nav links ──────────────────────────────────────────── */
 interface NavLink { label: string; to: string }
@@ -276,24 +300,56 @@ const scissorPos = computed(() => {
 }
 
 /* ── Page title (non-home) brand area ────────────────────── */
-.navbar__brand--spacer {
-  flex: 0 0 auto;
-  width: 0;
+.navbar__brand--title {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0 0 0.5rem;
+}
+
+.navbar__page-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--color-brown);
+  margin: 0;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.navbar__title-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.title-line {
+  display: block;
+  height: 2px;
+  width: 6rem;
+  background: var(--color-brown);
+  border-radius: 1px;
+}
+
+.title-heart {
+  font-size: 1.1rem;
+  color: var(--color-brown);
+  line-height: 1;
 }
 
 /* ── Desktop nav links ───────────────────────────────────── */
 .navbar__nav {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 3rem;
   padding-right: 0.5rem;
-  padding-top: 0.5rem;
+  padding-top: 1.2rem;
   margin-left: auto;
 }
 
 .navbar__link {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: var(--color-brown);
   text-decoration: underline;
