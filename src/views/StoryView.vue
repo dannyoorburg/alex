@@ -1,9 +1,6 @@
 <template>
   <div class="story-page">
     <section class="section story-section">
-      <div class="stamp stamp--top-right" aria-hidden="true">
-        Reels with Rhythm.<br>Content with Heart.
-      </div>
 
       <h2 class="story-title">
         <span class="story-heart" aria-hidden="true">♡</span>

@@ -2,11 +2,6 @@
   <div class="portfolio-page">
     <section class="port-section">
 
-      <!-- Decorative stamp (top-right) -->
-      <div class="stamp stamp--tr" aria-hidden="true">
-        Reels with Rhythm.<br>Content with Heart.
-      </div>
-
       <!-- Decorative flower + wire (top-right area) -->
       <div class="flower-deco" aria-hidden="true">
         <svg width="60" height="60" viewBox="0 0 60 60" class="flower-icon">
@@ -68,11 +63,6 @@
             <div class="collage-card collage-card--3">📷</div>
           </div>
         </div>
-      </div>
-
-      <!-- Bottom stamp -->
-      <div class="stamp stamp--bc" aria-hidden="true">
-        Built for Scroll.<br>Made to Stay.
       </div>
 
     </section>

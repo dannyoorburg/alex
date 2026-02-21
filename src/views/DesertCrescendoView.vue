@@ -6,8 +6,6 @@
     <div class="dc-content">
       <!-- Left: title block -->
       <div class="dc-left">
-        <h1 class="dc-title">Desert<br>Crescendo</h1>
-        <div class="dc-rule"/>
         <p class="dc-sub">A tribute to strength, softness...<br>and the silence between notes</p>
       </div>
 

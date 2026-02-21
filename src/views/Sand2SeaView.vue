@@ -4,8 +4,6 @@
 
       <div class="s2s-header">
         <div class="s2s-title-col">
-          <h1 class="s2s-title">Sand2Sea</h1>
-          <div class="s2s-divider"><span class="div-line"/><span class="div-heart">♡</span><span class="div-line"/></div>
           <p class="s2s-tagline">Where calm meets clarity — a digital presence designed to breathe.</p>
         </div>
       </div>

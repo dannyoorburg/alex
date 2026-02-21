@@ -1,8 +1,6 @@
 <template>
   <div class="services">
     <section class="pg-section">
-      <div class="stamp stamp--top-left">Mood. Motion. Meaning...<br>This is your moment.</div>
-      <div class="stamp stamp--top-right">Reels with Rhythm.<br>Content with Heart.</div>
 
       <p class="pg-subtitle">Strategy-led content &amp; design for digital presence</p>
 

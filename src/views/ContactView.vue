@@ -2,11 +2,6 @@
   <div class="contact">
     <section class="contact-section">
 
-      <!-- Decorative stamp -->
-      <div class="stamp stamp--top-right" aria-hidden="true">
-        Reels with Rhythm.<br>Content with Heart.
-      </div>
-
       <!-- "Thanks for visiting" label -->
       <span class="thanks-label" aria-hidden="true">Thanks for visiting</span>
 

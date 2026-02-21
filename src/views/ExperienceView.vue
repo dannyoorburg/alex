@@ -1,8 +1,6 @@
 <template>
   <div class="experience">
     <section class="pg-section">
-      <div class="stamp stamp--top-left">Mood. Motion. Meaning...<br>This is your moment.</div>
-      <div class="stamp stamp--top-right">Reels with Rhythm.<br>Content with Heart.</div>
 
       <div class="pg-header">
         <h1 class="pg-title">Built on story</h1>

@@ -304,6 +304,8 @@ const scissorPos = computed(() => {
   display: flex;
   flex-direction: column;
   padding: 0.5rem 0 0 0.5rem;
+  flex: 0 0 auto;
+  width: auto;
 }
 
 .navbar__page-title {
@@ -324,9 +326,8 @@ const scissorPos = computed(() => {
 }
 
 .title-line {
-  display: block;
+  flex: 1;
   height: 2px;
-  width: 6rem;
   background: var(--color-brown);
   border-radius: 1px;
 }
@@ -343,13 +344,13 @@ const scissorPos = computed(() => {
   align-items: center;
   gap: 3rem;
   padding-right: 0.5rem;
-  padding-top: 1.2rem;
+  padding-top: 2rem;
   margin-left: auto;
 }
 
 .navbar__link {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--color-brown);
   text-decoration: underline;
